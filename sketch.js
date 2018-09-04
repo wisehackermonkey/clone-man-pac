@@ -10,7 +10,7 @@ github.com/wisehackermonkey
 
 */
 var packman;
-
+var myAngle = 30;
 
 //enums for directions
 
@@ -18,6 +18,7 @@ function setup() {
   createCanvas(600,600);
   background(50);
   packman = new Character(0,300);
+  angleMode(DEGREES);
 }
 
 function draw() {
@@ -42,7 +43,8 @@ function Character(x,y){
   
   this.show = function(){
     // rect(this.pos.x, this.pos.y, this.w,this.h);
-    arc(this.pos.x, this.pos.y, this.w,this.h, QUARTER_PI, -QUARTER_PI, PIE);
+    // arc(this.pos.x, this.pos.y, this.w,this.h, QUARTER_PI, -QUARTER_PI, PIE);
+    arc(this.pos.x, this.pos.y, this.w,this.h, myAngle/2, 360 - myAngle/2, PIE);
   }
   
   this.position = function(position){
