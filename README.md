@@ -8,3 +8,5 @@ oranbusiness@gmail.com
 github.com/wisehackermonkey
 
 
+Play game at
+https://wisehackermonkey.github.io/clone-man-pac/
