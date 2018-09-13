@@ -34,8 +34,11 @@ function Item(x,y){
 function World(){
   this.sprites = [];
   this.init = function(){
-    for(var i = 0; i < 5; i+=1){
+    for(var i = 0; i < 3; i+=1){
       this.sprites.push(new Item(width/2,i * 101));
+    }
+       for(var i = 0; i < 5; i+=1){
+      this.sprites.push(new Item(width/2 + i* 101,i * 101));
     }
   }
   
@@ -58,12 +61,9 @@ function World(){
     for(var i = 0; i < this.sprites.length; i+=1){
       this.sprites[i].colilide(target);
       if(this.sprites[i].contact){
-        // var v = this.target.direction;
-        
+
         packman.direction.mult(-1);
-        // target.applyForce(v);
-        if(packman.direction.equals(createVector(1,0))){
-          // packman.pos.set(packman.pos.x-1,packman.pos.y);
+        if(packman.direction.equals(1,0)){
           packman.direction.set(0,0);
         }else{
           packman.direction.set(0,0);
