@@ -3,25 +3,44 @@ function Item(x,y){
   
   
   this.pos = createVector(x,y);
-  this.vel =  createVector(0,0);
-  this.w = 10;
-  this.h = 10 ;
-  
+  this.vel = createVector(0,0);
+  this.w = 100;
+  this.h = 100;
+  this.contact = false;
   
   
   this.show = function(){
-    rect(this.pos.x, this.pos.y, this.w,this.h);
+    push();//isolated the color from other items
+      if(this.contact){
+        fill(color("green"));
+      }
+      rect(this.pos.x, this.pos.y, this.w,this.h);
+    pop();
   }
   
   this.force = function(){
     this.pos.add(this.vel);
+  }
+  
+  this.colilide = function(box){
+    var p = box.pos;
+    var d = box;
+    var result = collideRectRect(p.x,p.y,d.w,d.h,this.pos.x,this.pos.y,this.w,this.h);
+    this.contact = result;
+    return this;
   }
 }
 
 function World(){
   this.sprites = [];
   this.init = function(){
-    for(var i = 0; i < 300; i+=1){
+    for(var i = 0; i < 5; i+=1){
+      this.sprites.push(new Item(width/2,i * 101));
+    }
+  }
+  
+  this.initRandom = function(){
+    for(var i = 0; i < 1; i+=1){
       this.sprites.push(new Item(random(width),random(height)));
     }
   }
@@ -35,7 +54,25 @@ function World(){
       this.sprites[i].force();
     }
   }
-  
+  this.collisions = function(target){
+    for(var i = 0; i < this.sprites.length; i+=1){
+      this.sprites[i].colilide(target);
+      if(this.sprites[i].contact){
+        // var v = this.target.direction;
+        
+        packman.direction.mult(-1);
+        // target.applyForce(v);
+        if(packman.direction.equals(createVector(1,0))){
+          // packman.pos.set(packman.pos.x-1,packman.pos.y);
+          packman.direction.set(0,0);
+        }else{
+          packman.direction.set(0,0);
+          packman.pos.set(packman.pos.x-1,packman.pos.y);
+        }
+      }
+      
+    }
+  }
   this.wallCheck = function(){
     for(var i = 0; i< this.sprites.length; i+=1){
       if(this.sprites[i].pos.x > width){

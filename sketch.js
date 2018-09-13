@@ -27,12 +27,17 @@ function setup() {
 
 function draw() {
   background(50);
+  text("WASD to move, colide with blocks",30, height-20);
   // world.applyFX();
   // world.wallCheck();
+  packman.key_input();
+  world.collisions(packman);
   world.show();
-  // packman.key_input();
-  // packman.move();
+  
+  
+  
+  packman.move();
 
-  // packman.show();
+  packman.show();
 }
 
