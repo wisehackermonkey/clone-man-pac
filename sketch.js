@@ -31,6 +31,7 @@ var dragStep = 0.01;
 
 var stars;
 
+var DEBUG = false;
 // Helper functions
 
 //https://stackoverflow.com/a/6000016/5460870
@@ -73,14 +74,36 @@ function draw() {
   background(50);
 
   game.show();
-  var event = game.collsions();
-  if (isFunction(event)) {
-    event(game.player);
-  }
+  // var event = game.collsions();
+  // if (isFunction(event)) {
+  //   event(game.player);
+  // }
+  
+    game.isColid(game.walls,game.player, function(player, walls) {
+
+      var prev = player.pos.copy();
+      var dir = player.vel.copy();
+      //dont move
+      dir.mult(-1);
+      
+      //stop player's movement
+      player.vel.set(0, 0); 
+      
+      // move 1 pixel in the opsite direction as sprite came
+      player.pos.set(prev.x + dir.x, prev.y + dir.y);
+      
+      player.clr = color('green');
+      walls.clr = color("red");
+  });
+    
+  
   var eventScren = game.screenwrap();
   if (isFunction(eventScren)) {
     eventScren(game.player);
   }
+ 
+
+  
   game.player.move();
   game.player.show();
   
@@ -151,6 +174,6 @@ function keyPressed() {
   } else if (keyCode === LEFT_ARROW) {
     game.player.moveDir('left');
   } else if (keyCode === 82) { //"r" = 82
-    game.player.Reset(10, 100);
+    game.player.Reset(31, 31 * 7);
   }
 }

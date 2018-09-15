@@ -1,0 +1,11 @@
+Goals
+make character move along pathways easier
+
+
+streach goals
+add pelets
+add ghosts(random movement)
+
+
+faroff goals
+ghosts movement using path finding
