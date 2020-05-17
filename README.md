@@ -1,4 +1,4 @@
-# clone-man-pac
+# `clone-man-pac`
 
 pack man clone in javascript
 ```
@@ -7,9 +7,10 @@ oranbusiness@gmail.com
 20180903
 github.com/wisehackermonkey
 ```
-![Screenshot](https://i.imgur.com/ea6Q5nG.png)
 ### Playable game Link
-[click here to play the game](https://wisehackermonkey.github.io/clone-man-pac)
+# [click here to play the game](https://wisehackermonkey.github.io/clone-man-pac)
+![Screenshot](https://i.imgur.com/ea6Q5nG.png)
+
 #### How to play
 ```
 Use the arrow keys to move, and to adjust how the character movement feels
