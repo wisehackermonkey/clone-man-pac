@@ -88,6 +88,8 @@ function draw() {
   stars.wallCheck();
   stars.show();
   
+  popup(`Pacman Clone: created by oran collins
+Movement: Arrow keys`,5)
 }
 
 function Item(x, y) {
